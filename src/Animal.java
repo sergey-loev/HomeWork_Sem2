@@ -1,12 +1,13 @@
 import java.time.LocalDate;
 import java.util.List;
 
-public class Animal {
+public abstract class Animal {
     protected String name;
     protected LocalDate birthDate;
     protected List <String> vaccinations;
     protected String illness;
     protected String owner;
+    protected String type;
 
     public Animal(String name, LocalDate birthDate, List<String> vaccinations, String illness, String owner) {
         this.name = name;
@@ -14,6 +15,7 @@ public class Animal {
         this.vaccinations = vaccinations;
         this.illness = illness;
         this.owner = owner;
+        this.type = getClass().getSimpleName();
     }
 
     public String getName() {
@@ -37,31 +39,20 @@ public class Animal {
     }
 
     private void Wakeup (){
-        System.out.println(String.format("%s is wakeup !!", this.name));
+        System.out.println(String.format("%s %s is wakeup !!", this.type, this.name));
     }
 
+
     private void Eat (){
-        System.out.println(String.format("%s ate", this.name));
+        System.out.println(String.format("%s %s ate", this.type, this.name));
     }
 
     private void Play (){
-        System.out.println(String.format("%s played", this.name));
+        System.out.println(String.format("%s %s played", this.type, this.name));
     }
 
     private void Sleep () {
-        System.out.println(String.format("%s sleeping", this.name));
-    }
-
-    public void ToGo (){
-        System.out.println(String.format("%s goes", this.name));
-    }
-
-    public void Fly (){
-        System.out.println(String.format("%s flies", this.name));
-    }
-
-    public void Swim () {
-        System.out.println(String.format("%s swimming", this.name));
+        System.out.println(String.format("%s %s sleeping", this.type, this.name));
     }
 
     public void LifeCycle () {
@@ -71,10 +62,12 @@ public class Animal {
         this.Sleep();
     }
 
+
+
     @Override
     public String toString() {
-        return "Animal{" +
-                "name='" + name + '\'' +
+        return  type + '\'' +
+                "{name='" + name + '\'' +
                 ", birthDate=" + birthDate +
                 ", vaccinations=" + vaccinations +
                 ", illness='" + illness + '\'' +

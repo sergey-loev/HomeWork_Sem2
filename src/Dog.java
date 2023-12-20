@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.util.List;
 
-public class Dog extends Animal {
+public class Dog extends Animal implements Goable, Swimable{
 
     private int legsCount;
     public Dog(String name, LocalDate birthDate, List<String> vaccinations, String illness, String owner, int legsCount) {
@@ -14,18 +14,14 @@ public class Dog extends Animal {
     }
 
     @Override
-    public String toString() {
-        return "Dog{" +
-                "name='" + name + '\'' +
-                ", birthDate=" + birthDate +
-                ", vaccinations=" + vaccinations +
-                ", illness='" + illness + '\'' +
-                ", owner='" + owner + '\'' +
-                '}';
+    public double Run() {
+        System.out.println(String.format("%s %s run", this.type, this.name));
+        return 10;
     }
 
     @Override
-    public void Fly() {
-        System.out.println(String.format("%s can't fly, it's just a dog.", this.name));
+    public double Swim() {
+        System.out.println(String.format("%s %s swim", this.type, this.name));
+        return 4;
     }
 }
